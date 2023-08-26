@@ -11,15 +11,20 @@ def readFileAndToeknize():
     string = readFile()
     stringArray = tokenize(string)
     for word in stringArray:
-        if(word in  wordCounter):
-            wordCounter[word] += 1
-        else:
-            wordCounter[word] = 1
+        if(word.isalpha()):
+            if(word in  wordCounter):
+                wordCounter[word] += 1
+            else:
+                wordCounter[word] = 1
             
-    for key in  wordCounter:
+    #sortedByCount = sorted(wordCounter.items(),key=lambda x:x[1],)
+    sortedByCount = sorted(wordCounter.items(),key=lambda x:x[1],reverse=True)
+    print(sortedByCount[:10])    
+            
+"""     for key in  wordCounter:
         if(wordCounter[key] >5):
             print(key+":"+str(wordCounter[key]))      
-    
+     """
     
     
 def readFile():
